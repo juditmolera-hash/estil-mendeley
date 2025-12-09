@@ -8,18 +8,19 @@
       <name>CustomStyle</name>
     </author>
     <category citation-format="author-date"/>
-    <updated>2025-02-01T00:00:00+00:00</updated>
+    <updated>2025-12-09T00:00:00+00:00</updated>
   </info>
 
   <locale>
     <terms>
       <term name="and"> &amp; </term>
+      <term name="et-al">et al.</term>
     </terms>
   </locale>
 
-  <!-- Autors -->
+  <!-- Autors: només 2 i després et al. -->
   <macro name="author">
-    <names variable="author" et-al-min="3" et-al-use-first="1">
+    <names variable="author" et-al-min="3" et-al-use-first="2">
       <name form="long" and="text" delimiter=", " initialize-with=". "/>
       <et-al term="et-al"/>
       <substitute>
@@ -45,6 +46,11 @@
     <text variable="DOI" prefix="https://doi.org/"/>
   </macro>
 
+  <!-- Títol (buida per evitar errors) -->
+  <macro name="title">
+    <text variable="title"/>
+  </macro>
+
   <!-- Bibliografia -->
   <bibliography>
     <layout delimiter=" ">
@@ -54,4 +60,12 @@
       <text macro="doi" prefix=" "/>
     </layout>
   </bibliography>
+
+  <!-- Citació en text -->
+  <citation>
+    <layout prefix="(" suffix=")" delimiter="; ">
+      <text macro="author"/>
+      <text macro="year" prefix=" "/>
+    </layout>
+  </citation>
 </style>
