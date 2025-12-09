@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0">
+  <info>
+    <title>Autor Any Revista DOI (Sense Títol)</title>
+    <id>autor-any-revista-doi-sense-titol</id>
+    <link href="http://www.zotero.org/styles" rel="self"/>
+    <author>
+      <name>CustomStyle</name>
+    </author>
+    <category citation-format="author-date"/>
+    <updated>2025-02-01T00:00:00+00:00</updated>
+  </info>
+
+  <locale>
+    <terms>
+      <term name="and"> &amp; </term>
+    </terms>
+  </locale>
+
+  <!-- Autors -->
+  <macro name="author">
+    <names variable="author" et-al-min="3" et-al-use-first="1">
+      <name form="long" and="text" delimiter=", " initialize-with=". "/>
+      <et-al term="et-al"/>
+      <substitute>
+        <names variable="editor"/>
+      </substitute>
+    </names>
+  </macro>
+
+  <!-- Any -->
+  <macro name="year">
+    <date variable="issued">
+      <date-part name="year" prefix="(" suffix=")"/>
+    </date>
+  </macro>
+
+  <!-- Revista -->
+  <macro name="journal">
+    <text variable="container-title" font-style="italic"/>
+  </macro>
+
+  <!-- DOI -->
+  <macro name="doi">
+    <text variable="DOI" prefix="https://doi.org/"/>
+  </macro>
+
+  <!-- Bibliografia -->
+  <bibliography>
+    <layout delimiter=" ">
+      <text macro="author"/>
+      <text macro="year" prefix=" "/>
+      <text macro="journal" prefix=" "/>
+      <text macro="doi" prefix=" "/>
+    </layout>
+  </bibliography>
+</style>
