@@ -1,71 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0">
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0.2" class="note" default-locale="en-US">
   <info>
-    <title>Autor Any Revista DOI (Sense Títol)</title>
-    <id>autor-any-revista-doi-sense-titol</id>
-    <link href="http://www.zotero.org/styles" rel="self"/>
+    <title>Estil Mineco Corregit</title>
+    <id>http://www.zotero.org/styles/estil-mineco-corregit</id>
+    <link href="https://github.com/juditmolera-hash/estil-mendeley"/>
     <author>
-      <name>CustomStyle</name>
+      <name>Judith Molera (corregit per ChatGPT)</name>
     </author>
-    <category citation-format="author-date"/>
+    <category citation-format="note"/>
     <updated>2025-12-09T00:00:00+00:00</updated>
   </info>
 
-  <locale>
-    <terms>
-      <term name="and"> &amp; </term>
-      <term name="et-al">et al.</term>
-    </terms>
-  </locale>
-
-  <!-- Autors: només 2 i després et al. -->
+  <!-- Macros -->
   <macro name="author">
-    <names variable="author" et-al-min="3" et-al-use-first="2">
-      <name form="long" and="text" delimiter=", " initialize-with=". "/>
-      <et-al term="et-al"/>
-      <substitute>
-        <names variable="editor"/>
-      </substitute>
+    <names variable="author">
+      <name and="text" delimiter=", "/>
+      <label form="short" prefix=" (" suffix=")"/>
     </names>
   </macro>
 
-  <!-- Any -->
-  <macro name="year">
+  <macro name="title">
+    <text variable="title" font-style="italic"/>
+  </macro>
+
+  <macro name="issued">
     <date variable="issued">
-      <date-part name="year" prefix="(" suffix=")"/>
+      <date-part name="year"/>
     </date>
   </macro>
 
-  <!-- Revista -->
-  <macro name="journal">
-    <text variable="container-title" font-style="italic"/>
-  </macro>
-
-  <!-- DOI -->
-  <macro name="doi">
-    <text variable="DOI" prefix="https://doi.org/"/>
-  </macro>
-
-  <!-- Títol (buida per evitar errors) -->
-  <macro name="title">
-    <text variable="title"/>
-  </macro>
-
-  <!-- Bibliografia -->
+  <!-- Bibliography -->
   <bibliography>
-    <layout delimiter=" ">
+    <layout prefix="" suffix="" delimiter="; ">
       <text macro="author"/>
-      <text macro="year" prefix=" "/>
-      <text macro="journal" prefix=" "/>
-      <text macro="doi" prefix=" "/>
+      <text macro="title" prefix=": "/>
+      <text macro="issued" prefix=", "/>
+      <text variable="publisher" prefix=", "/>
+      <text variable="URL" prefix=", "/>
     </layout>
   </bibliography>
 
-  <!-- Citació en text -->
+  <!-- Citations -->
   <citation>
     <layout prefix="(" suffix=")" delimiter="; ">
       <text macro="author"/>
-      <text macro="year" prefix=" "/>
+      <text macro="issued" prefix=", "/>
     </layout>
   </citation>
 </style>
